@@ -133,36 +133,49 @@ async function handleSubmit(e) {
   const form = e.target;
   const btn = document.getElementById("submitBtn");
 
-  const data = {
-    name: form.name.value,
-    email: form.email.value,
-    message: form.message.value,
-  };
+  const name = form.name.value;
+  const email = form.email.value;
+  const message = form.message.value;
 
   btn.textContent = "Sending...";
   btn.disabled = true;
 
+  const BOT_TOKEN = "PUT_YOUR_BOT_TOKEN_HERE";
+  const CHAT_ID = "PUT_YOUR_CHAT_ID_HERE";
+
+  const text = `
+📩 New Portfolio Message
+
+👤 Name: ${name}
+📧 Email: ${email}
+💬 Message:
+${message}
+`;
+
   try {
     const response = await fetch(
-      "https://YOUR-VERCEL-PROJECT.vercel.app/api/send-message",
+      `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          chat_id: CHAT_ID,
+          text: text,
+        }),
       }
     );
 
     if (response.ok) {
-      btn.textContent = "✓ Message Sent!";
+      btn.textContent = "✓ Sent to Telegram!";
       form.reset();
     } else {
       btn.textContent = "❌ Failed";
     }
 
   } catch (error) {
-    btn.textContent = "❌ Network Error";
+    btn.textContent = "❌ Error";
   }
 
   setTimeout(() => {
