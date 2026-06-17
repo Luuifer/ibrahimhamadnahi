@@ -140,7 +140,10 @@ async function handleSubmit(e) {
   btn.textContent = "Sending...";
   btn.disabled = true;
 
+  // 🔴 PUT YOUR NEW TOKEN HERE (from BotFather)
   const BOT_TOKEN = "AAGFJBAbAeC0Ed6Q-_tLV9pMJ5IQZgL2QmQ";
+
+  // 🔴 PUT YOUR CHAT ID HERE (from getUpdates)
   const CHAT_ID = "8836475385";
 
   const text = `
@@ -174,8 +177,8 @@ ${message}
       btn.textContent = "❌ Failed";
     }
 
-  } catch (error) {
-    btn.textContent = "❌ Error";
+  } catch (err) {
+    btn.textContent = "❌ Network Error";
   }
 
   setTimeout(() => {
