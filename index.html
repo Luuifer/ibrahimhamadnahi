@@ -16,7 +16,6 @@
 
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-logo">IH<span>.</span></div>
 
@@ -34,7 +33,6 @@
   </button>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <div class="hero-grid-bg"></div>
   <div class="hero-glow"></div>
@@ -57,7 +55,6 @@
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact" class="section-alt">
   <div class="container">
 
@@ -140,8 +137,8 @@ async function handleSubmit(e) {
   btn.textContent = "Sending...";
   btn.disabled = true;
 
-  // 🔴 PUT YOUR NEW TOKEN HERE (from BotFather)
-  const BOT_TOKEN = "AAGFJBAbAeC0Ed6Q-_tLV9pMJ5IQZgL2QmQ";
+  // FIXED: Added the mandatory numerical prefix (Bot ID) to the front of the token string
+  const BOT_TOKEN = "8836475385:AAGFJBAbAeC0Ed6Q-_tLV9pMJ5IQZgL2QmQ";
 
   // 🔴 PUT YOUR CHAT ID HERE (from getUpdates)
   const CHAT_ID = "8836475385";
